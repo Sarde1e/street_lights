@@ -1,43 +1,77 @@
-let btns = document.querySelectorAll(".num-button");
-let allBtns = document.querySelectorAll(".button");
-let resultBox = document.querySelector("#result-box");
-let clearBtn = document.querySelector('#clear');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-let total = document.querySelector("#total");
-
-let btnSpread = [...btns];
-let allBtnSpread = [...allBtns];
-
-// For Number Inputs
-btnSpread.forEach((button, i) => {
-  button.addEventListener("click", () => {
-    // Inner Values for calculator
-
-    if (resultBox.innerHTML == "0") {
-      resultBox.innerHTML = "";
-    }
-
-    let value = btns[i].innerHTML;
-    resultBox.innerHTML += value;
-  });
-});
-
-// Function to evalute Strings
-function evaluate(fn) {
-    return new Function('return ' + fn)();
+body {
+    background: #dde7dd;
+    font-family: 'Montserrat', sans-serif;
 }
 
-// To calculate All Input
-total.addEventListener('click', ()=> {
-let allInputs = resultBox.innerHTML;
+.container {
+    background: #dde1e7;
+    width: 320px;
+    height: 550px;
+    border-radius: .5em;
+    box-shadow: -3px -3px 7px #ffffff73,
+                2px 2px 5px rgba(94, 104, 121, 0.288);
+    margin: 0 auto;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+}
 
-resultBox.innerHTML = evaluate(allInputs);
+.container .result {
+    width: 100%;
+    height: 150px;
+    box-shadow: inset 2px 2px 5px #babecc,
+                inset -5px -5px 10px #ffffff73;    
+}
 
-console.log(evaluate(allInputs));
-})
+.container .result p {
+    font-size: 40pt;
+    overflow-y: auto;
+    text-align: right;  
+}
 
-// Clear all Inputs
-clearBtn.addEventListener('click', ()=> {
-    resultBox.innerHTML = "0";
-})
+.container .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
 
+.container .buttons .button, .container .buttons .num-button  {
+    cursor: grab;
+    text-align: center;
+    width: 60px;
+    font-size:18px;
+    height: 60px;
+    display: grid;
+    place-content: center;
+    border-radius: 20%;
+    box-shadow: 2px 2px 5px #babecc,
+                -5px -5px 10px #ffffff73;
+}
+
+.button:hover{
+    color: #3498db;
+    background-color: coral;   
+}
+
+.container .buttons .zero {
+    grid-column: 1/3;
+    width: 100%;
+    font-size:18px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #babecc,
+                -5px -5px 10px #ffffff73;
+}  
+   
+.action-btn {
+    color: grey;
+    font-weight: bold;
+}
+
+.calc-action-btn{
+    color: #ed11d7;
+    font-size: 20px;
+    font-weight: bold;
+}
