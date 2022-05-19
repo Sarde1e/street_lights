@@ -40,3 +40,4 @@ console.log(evaluate(allInputs));
 clearBtn.addEventListener('click', ()=> {
     resultBox.innerHTML = "0";
 })
+
